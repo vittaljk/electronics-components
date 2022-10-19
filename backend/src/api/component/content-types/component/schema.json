@@ -17,8 +17,29 @@
       "required": true,
       "unique": true
     },
+    "modelNumber": {
+      "type": "string"
+    },
     "description": {
       "type": "text"
+    },
+    "images": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "eolDate": {
+      "type": "date"
+    },
+    "isObsolete": {
+      "type": "boolean",
+      "default": true,
+      "required": true
     },
     "categories": {
       "type": "relation",
@@ -26,7 +47,7 @@
       "target": "api::category.category",
       "mappedBy": "component"
     },
-    "replacable_components": {
+    "replacableComponents": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::component.component",
@@ -36,12 +57,7 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::component.component",
-      "mappedBy": "replacable_components"
-    },
-    "isObsolete": {
-      "type": "boolean",
-      "default": true,
-      "required": true
+      "mappedBy": "replacableComponents"
     }
   }
 }
