@@ -20,6 +20,9 @@
     "modelNumber": {
       "type": "string"
     },
+    "package": {
+      "type": "string"
+    },
     "description": {
       "type": "text"
     },
@@ -33,6 +36,12 @@
         "videos",
         "audios"
       ]
+    },
+    "make": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::manufacturer.manufacturer",
+      "inversedBy": "components"
     },
     "eolDate": {
       "type": "date"
@@ -59,6 +68,9 @@
       "relation": "manyToMany",
       "target": "api::component.component",
       "inversedBy": "replacableComponents"
+    },
+    "dataSheet": {
+      "type": "string"
     }
   }
 }
