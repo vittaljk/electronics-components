@@ -21,7 +21,13 @@ export const QUERIES = {
                     eolDate
                     images {
                         data {
-                        id
+                          id
+                          attributes {
+                            name
+                            url
+                            width
+                            height
+                          }
                         }
                     }
                     categories {
@@ -67,6 +73,16 @@ export const QUERIES = {
 }
 
 export const MUTATIONS = {
-
+    ADD_COMPONENT: gql`
+        mutation addComponent($componentData: ComponentInput!) {
+            createComponent(data: $componentData) {
+                data {
+                    id
+                    attributes {
+                        name
+                    }
+                }
+            }  
+        }
+    `
 }
-
