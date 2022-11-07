@@ -9,11 +9,11 @@ function Layout(props) {
     return (
         <div className={LayoutStyles.layout_container}>
             <div className={LayoutStyles.layout_header_container}>
-                <Header />
+                {/* <Header /> */}
                 <div className={LayoutStyles.layout_content_container}>
                     {children}
                 </div>
-                <Footer />
+                {/* <Footer /> */}
             </div>
         </div>
     )

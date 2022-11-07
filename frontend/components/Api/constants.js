@@ -19,6 +19,14 @@ export const QUERIES = {
                     modelNumber
                     isObsolete
                     eolDate
+                    make {
+                        data {
+                            id
+                            attributes {
+                                name
+                            }
+                        }
+                    }
                     images {
                         data {
                           id
@@ -48,10 +56,12 @@ export const QUERIES = {
                             modelNumber
                             isObsolete
                             eolDate
+                            package
+                            dataSheet
                             images {
-                            data {
-                                id
-                            }
+                                data {
+                                    id
+                                }
                             }
                             categories {
                                 data {

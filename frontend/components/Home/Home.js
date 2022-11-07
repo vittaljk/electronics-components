@@ -61,7 +61,7 @@ function Home() {
         <div className="home-container">
             <Layout>
                 {/* TODO: remove this */}
-                <Button variant="contained" onClick={bulkUpload}>Bulk upload</Button>
+                {/* <Button variant="contained" onClick={bulkUpload}>Bulk upload</Button> */}
                 <div style={{
                     margin: '40px'
                 }}>
@@ -80,7 +80,9 @@ function Home() {
                         />
                     </div>
                     {searchText && components?.length !== 0 && selectedComponent !== null &&
-                        <ComponentOverview component={selectedComponent} />
+                        <div className="mt-10">
+                            <ComponentOverview component={selectedComponent} />
+                        </div>
                     }
                     {searchText && components?.length === 0 &&
                         <>Suggestions from google</>

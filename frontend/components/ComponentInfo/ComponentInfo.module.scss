@@ -1,0 +1,11 @@
+.componentImagesWrapper {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    .componentImageContainer {
+        span {
+            width: 100% !important;
+            height: 100% !important;
+        }
+    }
+}
