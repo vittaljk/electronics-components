@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 function Header(props) {
   return (
-    <div>Header</div>
+    <div></div>
   )
 }
 

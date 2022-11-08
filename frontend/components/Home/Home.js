@@ -58,38 +58,35 @@ function Home() {
     }
 
     return (
-        <div className="home-container">
-            <Layout>
+        <Layout>
+            {/* p-10 h-full */}
+            <div className="home-container h-full flex items-center">
                 {/* TODO: remove this */}
                 {/* <Button variant="contained" onClick={bulkUpload}>Bulk upload</Button> */}
-                <div style={{
-                    margin: '40px'
-                }}>
-                    <div style={{ width: 300 }}>
-                        <Autocomplete
-                            id="search-component-autocomplete"
-                            freeSolo
-                            filterOptions={x => x}
-                            getOptionLabel={(option) => (option ? option.name : "")}
-                            options={components || []}
-                            value={selectedComponent}
-                            onChange={handleSelectComponent}
-                            inputValue={searchText}
-                            onInputChange={handleSearchTextChange}
-                            renderInput={(params) => <TextField {...params} label="Search Component" />}
-                        />
-                    </div>
-                    {searchText && components?.length !== 0 && selectedComponent !== null &&
-                        <div className="mt-10">
-                            <ComponentOverview component={selectedComponent} />
-                        </div>
-                    }
-                    {searchText && components?.length === 0 &&
-                        <>Suggestions from google</>
-                    }
+                <div className="w-2/4">
+                    <Autocomplete
+                        id="search-component-autocomplete"
+                        freeSolo
+                        filterOptions={x => x}
+                        getOptionLabel={(option) => (option ? option.name : "")}
+                        options={components || []}
+                        value={selectedComponent}
+                        onChange={handleSelectComponent}
+                        inputValue={searchText}
+                        onInputChange={handleSearchTextChange}
+                        renderInput={(params) => <TextField {...params} label="Search Component" />}
+                    />
                 </div>
-            </Layout>
-        </div>
+                {searchText && components?.length !== 0 && selectedComponent !== null &&
+                    <div className="mt-10">
+                        <ComponentOverview component={selectedComponent} />
+                    </div>
+                }
+                {searchText && components?.length === 0 &&
+                    <>Suggestions from google</>
+                }
+            </div>
+        </Layout>
     )
 }
 
