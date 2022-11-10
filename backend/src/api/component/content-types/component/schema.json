@@ -71,6 +71,10 @@
     },
     "dataSheet": {
       "type": "string"
+    },
+    "slug": {
+      "type": "string",
+      "required": true
     }
   }
 }

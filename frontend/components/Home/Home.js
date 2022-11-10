@@ -1,16 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import Layout from '../Common/Layout';
-import { useComponentsWithSearch, useAddComponent } from '../Api/methods';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import ComponentOverview from '../ComponentOverview';
 import Button from '@mui/material/Button';
-import { useMutation } from "@tanstack/react-query";
-import request from "graphql-request"
-import { MUTATIONS } from "../Api/constants";
-import CONFIG from '../../config';
 import { getComponentsData } from '../Common/helpers';
-
 // TODO: 
 // style fixes (remove hardcoding)
 
@@ -19,27 +14,28 @@ function Home() {
     const [selectedComponent, setSelectedComponent] = useState(null);
 
     // TODO: handle error and loading ui
-    const { status, data: componentsData, error, isFetching } = useComponentsWithSearch(['component', searchText], searchText);
+    // const { status, data: componentsData, error, isFetching } = useComponentsWithSearch(['component', searchText], searchText);
 
-    const components = componentsData?.components?.data.map(({ id, attributes }) => ({ id, ...attributes }));
+    // TODO: move this to getStaticPaths
+    // const components = componentsData?.components?.data.map(({ id, attributes }) => ({ id, ...attributes }));
 
     // TODO: move this
-    const addComponentMutation = useMutation({
-        mutationFn: async (variables) => {
-            request(
-                CONFIG.BACKEND_URL,
-                MUTATIONS.ADD_COMPONENT,
-                variables
-            )
-        }
-    })
+    // const addComponentMutation = useMutation({
+    //     mutationFn: async (variables) => {
+    //         request(
+    //             CONFIG.ENDPOINT,
+    //             MUTATIONS.ADD_COMPONENT,
+    //             variables
+    //         )
+    //     }
+    // })
 
     // TODO: debounce
-    useEffect(() => {
-        if (searchText && components?.length === 0) {
-            console.log('Make google api call')
-        }
-    }, [searchText, components])
+    // useEffect(() => {
+    //     if (searchText && components?.length === 0) {
+    //         console.log('Make google api call')
+    //     }
+    // }, [searchText, components])
 
     function handleSearchTextChange(_, newInputValue) {
         setSearchText(newInputValue);
@@ -49,22 +45,23 @@ function Home() {
         setSelectedComponent(selectedComponent);
     }
 
-    function bulkUpload() {
-        const componentsData = getComponentsData();
-        console.log('componentsData', componentsData)
-        // componentsData.forEach(componentData => {
-        //     addComponentMutation.mutate({componentData});
-        // });
-    }
+    // function bulkUpload() {
+    //     const componentsData = getComponentsData();
+    //     console.log('componentsData', componentsData)
+    //     componentsData.forEach(componentData => {
+    //         addComponentMutation.mutate({componentData});
+    //     });
+    // }
 
     return (
         <Layout>
             {/* p-10 h-full */}
-            <div className="home-container h-full flex items-center">
+            <div className="home-container h-full flex items-center justify-center">
                 {/* TODO: remove this */}
                 {/* <Button variant="contained" onClick={bulkUpload}>Bulk upload</Button> */}
+                <Link href="/component">Component</Link>
                 <div className="w-2/4">
-                    <Autocomplete
+                    {/* <Autocomplete
                         id="search-component-autocomplete"
                         freeSolo
                         filterOptions={x => x}
@@ -75,19 +72,28 @@ function Home() {
                         inputValue={searchText}
                         onInputChange={handleSearchTextChange}
                         renderInput={(params) => <TextField {...params} label="Search Component" />}
-                    />
+                    /> */}
                 </div>
-                {searchText && components?.length !== 0 && selectedComponent !== null &&
+                {/* {searchText && components?.length !== 0 && selectedComponent !== null &&
                     <div className="mt-10">
                         <ComponentOverview component={selectedComponent} />
                     </div>
                 }
                 {searchText && components?.length === 0 &&
                     <>Suggestions from google</>
-                }
+                } */}
             </div>
         </Layout>
     )
 }
 
 export default Home
+
+export async function getStaticProps(context) {
+    console.log("======================= inside getStaticProps ========================");
+    // const { status, data: componentsData, error, isFetching } = useComponentsWithSearch(['component']);
+    // console.log('componentsData', componentsData);
+    return {
+        props: {},
+    }
+}

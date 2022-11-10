@@ -23,11 +23,13 @@ const MAKE_ID_MAP = {
 export function getComponentsData() {
     return COMPONENTS_JSON_MOCK.map(component => ({
         name: component[MAP_CSV_TO_JSON.name],
+        slug: component[MAP_CSV_TO_JSON.name].replace(/\s+/g, '-').toLowerCase(),
         modelNumber: component[MAP_CSV_TO_JSON.modelNumber],
         package: component[MAP_CSV_TO_JSON.package],
         make: MAKE_ID_MAP[component[MAP_CSV_TO_JSON.make]],
         // eolDate: component[MAP_CSV_TO_JSON.eolDate] || new Date().toLocaleString().split(',')[0].replace(/\//g, '-'),
         categories: [CATEGORIES_ID_MAP[component[MAP_CSV_TO_JSON.category]].toString()],
+        images: [1, 2, 3],
         dataSheet: component[MAP_CSV_TO_JSON.dataSheet]
     }));
 }

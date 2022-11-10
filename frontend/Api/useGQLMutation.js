@@ -1,12 +1,12 @@
 import { useMutation } from "@tanstack/react-query";
 import request from "graphql-request"
-import CONFIG from '../../config'
+import CONFIG from '../config'
 
-const useGQLMutation = (mutation, variables, config = {}) => {
+const useGQLMutation = (mutation) => {
     return useMutation({
         mutationFn: async (variables) => {
             request(
-                CONFIG.BACKEND_URL,
+                CONFIG.ENDPOINT,
                 mutation,
                 variables
             )
