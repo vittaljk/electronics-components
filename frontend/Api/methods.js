@@ -9,8 +9,8 @@ export function useComponentsWithSearch(key, searchText = '') {
   return useGQLQuery(key, QUERIES.GET_COMPONENTS_WITH_SEARCH_QUERY, variables)
 }
 
-export function getComponentsWithSearch(keys = [], variables = {}) {
-  return useGQLQuery(keys, QUERIES.GET_COMPONENTS_WITH_SEARCH_QUERY, variables);
+export function getComponentsWithSearch(keys = [], variables = {}, initialData = {}) {
+  return useGQLQuery(keys, QUERIES.GET_COMPONENTS_WITH_SEARCH_QUERY, variables, initialData);
 }
 
 export function addComponent() {
