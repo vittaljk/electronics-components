@@ -27,3 +27,11 @@ export function useComponentsWithSearchInitialData() {
     { searchText: '' }
   )
 }
+
+export function getComponentsBySlug(slug) {
+  return request(
+    CONFIG.ENDPOINT,
+    QUERIES.GET_COMPONENT_BY_SLUG,
+    { slug }
+  )
+}

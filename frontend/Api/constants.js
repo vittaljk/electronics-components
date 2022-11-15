@@ -21,9 +21,9 @@ export const QUERIES = {
         }
       }    
     `,
-    GET_COMPONENT: gql`
-      query getComponent($id: ID!) {
-        component(id: $id) {
+    GET_COMPONENT_BY_SLUG: gql`
+      query getComponentBySlug($slug: String!) {
+        components(filters: { slug: { eq: $slug } }) {
           data {
             id
             attributes {
@@ -91,7 +91,7 @@ export const QUERIES = {
             }
           }
         }
-      }      
+      }
     `
 }
 

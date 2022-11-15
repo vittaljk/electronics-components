@@ -3,8 +3,6 @@ import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import Layout from '../Common/Layout';
 
-// TODO: add debounce to handleSearchTextChange
-
 function Home(props) {
     const {
         componentsData,
