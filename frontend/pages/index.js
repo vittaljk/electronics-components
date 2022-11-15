@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import { useRouter } from 'next/router'
 import { getComponentsWithSearch, useComponentsWithSearchInitialData } from '../Api/methods';
 import Home from '../components/Home';
 
 export default function App(props) {
+  const router = useRouter();
   const [searchText, setSearchText] = useState('');
   const [selectedComponent, setSelectedComponent] = useState(null);
 
@@ -15,7 +17,9 @@ export default function App(props) {
 
   function handleSelectComponent(_, selectedComponent) {
     setSelectedComponent(selectedComponent);
+    router.push(`component/${selectedComponent.slug}`);
   }
+
   return (
     <Home 
       componentsData={componentsData}

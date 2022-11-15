@@ -1,11 +1,17 @@
 import React from 'react';
 import { useComponentsWithSearchInitialData, getComponentsBySlug } from '../../Api/methods';
+import ComponentOverview from '../../components/ComponentOverview/ComponentOverview';
+import Layout from '../../components/Common/Layout';
 
 function Component(props) {
     const { component } = props;
 
     return (
-        <div>Component</div>
+        <Layout>
+            <div className="p-16">
+                <ComponentOverview component={component}/>
+            </div>
+        </Layout>
     )
 }
 
@@ -13,7 +19,6 @@ export default Component
 
 export async function getStaticPaths() {
     const { components: { data: componentsData } } = await useComponentsWithSearchInitialData();
-
     const paths = componentsData.map(({ attributes: { slug } }) => ({
         params: { slug }
     }));
