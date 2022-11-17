@@ -1,0 +1,16 @@
+.replacableComponentContainer {
+    .replacableComponentsListContainer {
+        .replacableComponentsListItemContainer {
+            border-left: solid 1px;            
+            &:hover {
+                @apply text-gray-900 border-gray-900;
+            }
+        }
+        .selectedComponent {
+            @apply text-blue-400 border-blue-400;
+            &:hover {
+                @apply text-blue-400 border-blue-400;
+            }
+        }
+    }
+}

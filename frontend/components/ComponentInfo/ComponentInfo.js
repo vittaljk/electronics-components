@@ -47,8 +47,6 @@ function ComponentInfo(props) {
                     </div>
                 }
             </Card>
-
-            {/* images scroll */}
         </div>
     )
 }
