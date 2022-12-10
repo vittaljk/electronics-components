@@ -26,7 +26,7 @@ function ComponentInfo(props) {
             <Card sx={{ minWidth: 275 }} className="p-5">
                 <div className="text-blue-400">{name}</div>
                 <p className="text-sm">Model number <span className="font-bold">{modelNumber}</span></p>
-                <p>{packageName}</p>
+                <p className="text-sm">Package <span className="font-bold">{packageName}</span></p>
                 {make && <p className="text-sm">Manufactured by <span className="font-bold">{make}</span></p>}
                 <p className="underline text-xs text-red-400">
                     <a href={dataSheet} target="_blank" rel="noopener noreferrer">Datasheet</a>

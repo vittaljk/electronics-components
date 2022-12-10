@@ -17,7 +17,7 @@ function Home(props) {
     return (
         <Layout>
             <div className="h-full flex items-center justify-center">
-                <div className="w-2/4">
+                <div className="w-11/12 lg:w-2/4">
                     <Autocomplete
                         id="search-component-autocomplete"
                         freeSolo

@@ -15,8 +15,10 @@ function ComponentOverview(props) {
                 </div>
                 <span className="text-2xl font-medium">{component?.attributes.name}</span>
             </div>
-            <div className={`grid grid-cols-[2fr_3fr] gap-3 ${styles.componentOverviewContainer}`}>
-                <ComponentInfo component={component}/>
+            <div className={`block lg:grid grid-cols-[2fr_3fr] gap-3 ${styles.componentOverviewContainer}`}>
+                <div className="mb-3 lg:mb-0">
+                    <ComponentInfo component={component}/>
+                </div>
                 {component?.attributes?.replacableComponents.data.length > 0 &&
                     <ReplacableComponentOverview components={component.attributes.replacableComponents.data}/>
                 }
