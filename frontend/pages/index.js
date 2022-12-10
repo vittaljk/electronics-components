@@ -16,8 +16,10 @@ export default function App(props) {
   }
 
   function handleSelectComponent(_, selectedComponent) {
-    setSelectedComponent(selectedComponent);
-    router.push(`component/${selectedComponent.slug}`);
+    if (selectedComponent) {
+      setSelectedComponent(selectedComponent);
+      router.push(`component/${selectedComponent.slug}`);
+    }
   }
 
   return (

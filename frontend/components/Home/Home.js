@@ -28,7 +28,20 @@ function Home(props) {
                         onChange={handleSelectComponent}
                         inputValue={searchText}
                         onInputChange={handleSearchTextChange}
-                        renderInput={(params) => <TextField {...params} label="Search Component" />}
+                        renderInput={(params) => 
+                            <TextField 
+                                {...params} 
+                                label="Search Component" 
+                                inputProps={{
+                                    ...params.inputProps,
+                                    onKeyDown: (e) => {
+                                        if (e.key === 'Enter') {
+                                            e.stopPropagation();
+                                        }
+                                    },
+                                }}
+                            />
+                        }
                     />
                 </div>
             </div>
